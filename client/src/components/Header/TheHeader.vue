@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "TheHeader",
   data: () => {
     return {
       link: [
@@ -35,15 +35,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.link {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 22px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-  position: relative;
-  left: 0px;
-  &:hover {
-    left: 5px;
-  }
-}
+@import "style.scss";
 </style>

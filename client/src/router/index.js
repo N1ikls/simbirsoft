@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import TableLeagues from "../views/TableLeagues.vue";
+import Leagues from "../views/Leagues.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "TableLeagues",
-    component: TableLeagues,
+    name: "Leagues",
+    component: Leagues,
   },
 ];
 const router = new VueRouter({

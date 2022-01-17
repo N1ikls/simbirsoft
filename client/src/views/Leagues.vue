@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import ListLeagues from "../components/Main/ListLeagues.vue";
+import ListLeagues from "../components/Main/List/ListLeagues.vue";
 export default {
-  name: "Table",
+  name: "Leagues",
   components: {
     ListLeagues,
   },
