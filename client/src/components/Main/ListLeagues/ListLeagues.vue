@@ -19,7 +19,12 @@
       </template>
 
       <template #default="props">
-        <ListLeaguesCard :getTeams="GET_INFO_TEAMS_FOOTBALL" :props="props" />
+        <ListLeaguesCard
+          :getApi="GET_INFO_TEAMS_FOOTBALL"
+          :props="props"
+          :filteredKeys="filteredKeys"
+          :sortBy="sortBy"
+        />
       </template>
 
       <template #footer>
@@ -38,7 +43,7 @@
 </template>
 
 <script>
-import Leagues from "./leagues";
+import Leagues from "./ListLeagues";
 import { mapActions, mapGetters } from "vuex";
 import ListLeaguesToolbar from "./ListLeaguesToolbar.vue";
 import ListLeaguesMenu from "./ListLeaguesMenu.vue";

@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dark color="blue darken-3" class="mb-1">
+  <v-toolbar dark class="mb-1 v-toolbar">
     <v-text-field
       v-model="searchInput"
       clearable
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import ListLeaguesToolbar from "./ListLeaguesToolbar.js";
 export default {
   name: "ListLeaguesToolbar",
   props: {
@@ -43,32 +44,13 @@ export default {
     sortDesc: Boolean,
   },
   computed: {
-    searchInput: {
-      get() {
-        return this.search;
-      },
-      set(newValue) {
-        this.$emit("update:search", newValue);
-      },
-    },
-    sortDescInput: {
-      get() {
-        return this.sortDesc;
-      },
-      set(newValue) {
-        this.$emit("update:sortDesc", newValue);
-      },
-    },
-    sortByInput: {
-      get() {
-        return this.sortBy;
-      },
-      set(newValue) {
-        this.$emit("update:sortBy", newValue);
-      },
-    },
+    ...ListLeaguesToolbar.computed,
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.v-toolbar {
+  background: linear-gradient(270deg, #00dbd8 0%, #b133ff 100%);
+}
+</style>

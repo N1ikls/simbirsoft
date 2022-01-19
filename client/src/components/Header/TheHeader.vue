@@ -6,6 +6,7 @@
           v-for="(items, index) in link"
           :key="index"
           class="header__link link"
+          @click.prevent="$router.push(items.route).catch(() => {})"
         >
           {{ items.title }}
         </v-toolbar-title>
@@ -22,7 +23,7 @@ export default {
       link: [
         {
           title: "Список лиг/соревнований",
-          route: "",
+          route: "/",
         },
         {
           title: "Календарь лиги",
