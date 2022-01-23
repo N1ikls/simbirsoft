@@ -5,6 +5,7 @@ export default {
     teams: [],
     error: false,
     isTeams: false,
+    snackbar: false,
   },
   mutations: {
     SET_INFO_LEAGUE_FOOTBALL: (state, league) => {
@@ -18,6 +19,9 @@ export default {
     },
     SET_INFO_TEAMS_ISTEAMS: (state, isTeams) => {
       state.isTeams = isTeams;
+    },
+    SET_SNACKBAR: (state, snackbar) => {
+      state.snackbar = snackbar;
     },
   },
   actions: {
@@ -41,6 +45,7 @@ export default {
         .then((teams) => {
           commit("SET_INFO_TEAMS_FOOTBALL", teams.data);
           commit("SET_INFO_TEAMS_ISTEAMS", true);
+          commit("SET_SNACKBAR", true);
         })
         .catch(() => {
           commit("SET_INFO_ERROR_TEAMS", true);
@@ -59,6 +64,9 @@ export default {
     },
     isTeams(state) {
       return state.isTeams;
+    },
+    snackbar(state) {
+      return state.snackbar;
     },
   },
 };

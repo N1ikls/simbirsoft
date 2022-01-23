@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Leagues from "./ListLeagues";
+import List from "./List.js";
 import { mapActions, mapGetters } from "vuex";
 import ListLeaguesToolbar from "./ListLeaguesToolbar.vue";
 import ListLeaguesMenu from "./ListLeaguesMenu.vue";
@@ -73,23 +73,23 @@ export default {
     ...mapGetters(["league"]),
     //
     numberOfPages() {
-      return Leagues.pages(this.getCount, this.itemsPerPage);
+      return List.pages(this.getCount, this.itemsPerPage);
     },
     //
     filteredKeys() {
-      return Leagues.filterKeys(this.keys);
+      return List.filterKeys(this.keys);
     },
     // выгружаем данные из url и берем обьект "competitions"
     getListLeague() {
-      return Leagues.getLeagues(this.league);
+      return List.getList(this.league);
     },
     // считываем количество
     getCount() {
-      return Leagues.getCount(this.league);
+      return List.getCount(this.league);
     },
     // area name
     getArea() {
-      return Leagues.getArea(this.league);
+      return List.getArea(this.league);
     },
   },
   name: "ListLeagues",

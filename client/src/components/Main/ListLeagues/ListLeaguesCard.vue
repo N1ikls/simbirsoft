@@ -75,6 +75,7 @@ export default {
     routerPush() {
       if (this.isTeams) {
         this.$router.push("/teams").catch(() => {});
+        this.$store.commit("SET_INFO_TEAMS_ISTEAMS", false);
       }
     },
   },

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import ListLeaguesToolbar from "./ListLeaguesToolbar.js";
+import ListLeaguesToolbar from "./ListToolbar.js";
 export default {
   name: "ListLeaguesToolbar",
   props: {

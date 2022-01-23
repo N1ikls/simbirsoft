@@ -1,16 +1,24 @@
-export default class Leagues {
+export default class List {
   // фильтрация по ключу чтобы не совпадала с именем
   static filterKeys(keys) {
     return keys.filter((key) => key !== "Name");
   }
   //  получаем весь обьект массив из api тот который нам нужен
-  static getLeagues(league) {
+  static getList(league) {
     let array = [];
     for (let i in league) {
       array.push(league[i]);
     }
 
     return array[2];
+  }
+  //
+  static getListTeams(teams) {
+    let array = [];
+    for (let i in teams.teams) {
+      array.push(teams.teams[i]);
+    }
+    return array;
   }
   // возращаем количество данных
   static getCount(league) {

@@ -9,6 +9,7 @@ export default {
   components: {
     ListTeams,
   },
+  computed: {},
 };
 </script>
 

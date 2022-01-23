@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-data-iterator
-      :items="getListLeague"
+      :items="getListTeams"
       :items-per-page.sync="itemsPerPage"
       :page.sync="page"
       :search="search"
@@ -10,7 +10,7 @@
       hide-default-footer
     >
       <template #header>
-        <ListLeaguesToolbar
+        <ListTeamsToolbar
           :keys="keys"
           :search.sync="search"
           :sortBy.sync="sortBy"
@@ -19,8 +19,7 @@
       </template>
 
       <template #default="props">
-        <ListLeaguesCard
-          :getApi="GET_INFO_TEAMS_FOOTBALL"
+        <ListTeamsCard
           :props="props"
           :filteredKeys="filteredKeys"
           :sortBy="sortBy"
@@ -28,7 +27,7 @@
       </template>
 
       <template #footer>
-        <ListLeaguesMenu
+        <ListTeamsMenu
           :itemsPerPageArray="itemsPerPageArray"
           :formerPage="formerPage"
           :itemsPerPage="itemsPerPage"
@@ -39,26 +38,26 @@
         />
       </template>
     </v-data-iterator>
+    <Snackbar />
   </v-container>
 </template>
 
 <script>
-import Leagues from "../ListLeagues/ListLeagues.js";
-import { mapActions, mapGetters } from "vuex";
-import ListLeaguesToolbar from "../ListLeagues/ListLeaguesToolbar.vue";
-import ListLeaguesMenu from "../ListLeagues/ListLeaguesMenu.vue";
-import ListLeaguesCard from "../ListLeagues/ListLeaguesCard.vue";
+import Snackbar from "./ListTeamsSnackbar.vue";
+import List from "../ListLeagues/List.js";
+import { mapGetters } from "vuex";
+import ListTeamsToolbar from "../ListLeagues/ListLeaguesToolbar.vue";
+import ListTeamsMenu from "../ListLeagues/ListLeaguesMenu.vue";
+import ListTeamsCard from "./ListTeamsCard.vue";
 export default {
   components: {
-    ListLeaguesToolbar,
-    ListLeaguesMenu,
-    ListLeaguesCard,
+    ListTeamsToolbar,
+    ListTeamsMenu,
+    ListTeamsCard,
+    Snackbar,
   },
-  mounted() {
-    this.GET_INFO_LEAGUE_FOOTBALL();
-  },
+  mounted() {},
   methods: {
-    ...mapActions(["GET_INFO_LEAGUE_FOOTBALL", "GET_INFO_TEAMS_FOOTBALL"]),
     nextPage() {
       if (this.page + 1 <= this.numberOfPages) this.page += 1;
     },
@@ -70,26 +69,26 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["league"]),
+    ...mapGetters(["teams"]),
     //
     numberOfPages() {
-      return Leagues.pages(this.getCount, this.itemsPerPage);
+      return List.pages(this.getCount, this.itemsPerPage);
     },
     //
     filteredKeys() {
-      return Leagues.filterKeys(this.keys);
+      return List.filterKeys(this.keys);
     },
     // выгружаем данные из url и берем обьект "competitions"
-    getListLeague() {
-      return Leagues.getLeagues(this.league);
+    getListTeams() {
+      return List.getListTeams(this.teams);
     },
     // считываем количество
     getCount() {
-      return Leagues.getCount(this.league);
+      return List.getCount(this.teams);
     },
     // area name
     getArea() {
-      return Leagues.getArea(this.league);
+      return List.getArea(this.teams);
     },
   },
   name: "ListTeams",
@@ -102,7 +101,7 @@ export default {
       itemsPerPageArray: [4, 8, 12, 20],
       itemsPerPage: 4,
       sortBy: "",
-      keys: ["Name", "area"],
+      keys: ["Name"],
     };
   },
 };
